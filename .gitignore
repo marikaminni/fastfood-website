@@ -1,0 +1,5 @@
+#file contenente credenziali DB
+.env
+
+#ignora file in queste directory
+node_modules/
