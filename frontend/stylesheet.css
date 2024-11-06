@@ -1,7 +1,11 @@
+html,
 body {
   font-family: "Open sans", "Gill Sans", "Gill Sans MT", "Calibri",
     "Trebuchet MS", sans-serif;
   font-size: large;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 .container-fluid {
   margin: 20px 20px;
@@ -49,7 +53,8 @@ body {
 }
 
 .custom-caption .highlight {
-  font-family: "Impact", sans-serif;
+  font-weight: bold;
+  font-style: italic;
   font-size: 4rem;
   color: #fafafa;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -57,7 +62,8 @@ body {
 
 .custom-caption .subtitle {
   font-size: 2rem;
-  font-family: "Impact", sans-serif;
+  font-weight: bold;
+  font-style: italic;
   color: #ebe2e2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-top: 10px;
@@ -71,7 +77,8 @@ body {
 }
 
 .custom-caption2 .highlight2 {
-  font-family: "Impact", sans-serif;
+  font-weight: bold;
+  font-style: italic;
   font-size: 4rem;
   color: #fafafa;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -79,7 +86,8 @@ body {
 
 .custom-caption2 .subtitle2 {
   font-size: 2rem;
-  font-family: "Impact", sans-serif;
+  font-weight: bold;
+  font-style: italic;
   color: #ebe2e2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-top: 10px;
@@ -92,7 +100,8 @@ body {
   text-align: left;
 }
 .custom-caption3 .highlight3 {
-  font-family: "Impact", sans-serif;
+  font-weight: bold;
+  font-style: italic;
   font-size: 4rem;
   color: #fefefe;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -100,7 +109,8 @@ body {
 
 .custom-caption3 .subtitle3 {
   font-size: 3rem;
-  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  font-style: italic;
   color: #ebe2e2;
   margin-top: 10px;
 }
@@ -165,4 +175,17 @@ body {
 
 .about-section p {
   margin-bottom: 1.5rem;
+}
+
+.booktable-title h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#map {
+  height: 450px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
