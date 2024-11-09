@@ -1,0 +1,205 @@
+html,
+body {
+  font-family: "Open sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  font-size: large;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #eee7e4;
+}
+.container-fluid {
+  margin: 20px 20px;
+}
+.navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.navbar-brand {
+  font-size: x-large;
+  font-family: "Trebuchet MS";
+  font-weight: bold;
+  font-style: italic;
+}
+
+.btn-order {
+  border-radius: 10px;
+  box-shadow: #180202;
+}
+
+/*! sistemare le immagini perchè in questo modo non si adattano agli schermi più piccoli e il testo scompare*/
+.carousel-item img {
+  height: 100vh; /* Imposta l'altezza al 80% dell'altezza del viewport */
+  width: 100%; /* Assicura che le immagini si adattino alla larghezza del carosello */
+  object-fit: cover; /* Fa in modo che l'immagine riempia il contenitore senza distorcersi */
+}
+
+.custom-caption {
+  position: absolute;
+  bottom: 40%;
+  left: 10%;
+  text-align: left;
+}
+
+.custom-caption .highlight {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 4rem;
+  color: #fafafa;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.custom-caption .subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #ebe2e2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+}
+
+.custom-caption2 {
+  position: absolute;
+  bottom: 30%;
+  right: 10%;
+  text-align: right;
+}
+
+.custom-caption2 .highlight2 {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 4rem;
+  color: #fafafa;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.custom-caption2 .subtitle2 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #ebe2e2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+}
+
+.custom-caption3 {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  text-align: left;
+}
+.custom-caption3 .highlight3 {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 4rem;
+  color: #fefefe;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.custom-caption3 .subtitle3 {
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #ebe2e2;
+  margin-top: 10px;
+}
+
+.hot-word {
+  color: red;
+  font-family: "Impact", sans-serif;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.layout-padding-bottom {
+  padding-bottom: 90px;
+  margin-top: 50px;
+}
+/* Stile per la sezione Top Product */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-img-top {
+  transition: transform 0.3s ease-in-out;
+  object-fit: cover; /* Fa in modo che l'immagine si adatti al contenitore */
+  height: 300px;
+  width: 100%; /* Imposta l'altezza delle immagini per uniformità */
+}
+
+.top-product {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.top-product h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.top-product p {
+  font-size: 1.2rem;
+  color: #555;
+}
+/* Stile per la sezione About */
+.about-section {
+  padding: 50px;
+  font-size: 1.2rem;
+  font-family: "Arial", sans-serif;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.about-section p {
+  margin-bottom: 1.5rem;
+}
+/* Stile per il menu */
+.menu-title #menu {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+.button-container .btn {
+  border-radius: 30px;
+}
+/*Stile per prenotazione*/
+.booktable-title h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#map {
+  height: 450px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Stile per il footer */
+.contact-info a,
+.social-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info a:hover,
+.social-links a:hover {
+  color: #ef5637ee;
+}
+
+.social-links p {
+  font-style: italic;
+}
