@@ -146,12 +146,157 @@ module.exports = Product;
       category: "Chicken",
       image: "/immagini/prodotti/burger pollo/texas-burger.png",
     },
+    {
+      name: "Sparkling water",
+      description: "0.50 L bottle of sparkling water.",
+      price: 0.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/acqua-frizz.png",
+    },
+    {
+      name: "Still water",
+      description: "0.50 L bottle of still water.",
+      price: 0.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/acqua-nat.png",
+    },
+    {
+      name: "Coke",
+      description: "0.4L coke.",
+      price: 1.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/coca-cola.png",
+    },
+    {
+      name: "Diet Coke",
+      description: "0.4L diet coke.",
+      price: 1.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/coca-zero.png",
+    },
+    {
+      name: "Sprite",
+      description: "0.4L Sprite.",
+      price: 1.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/sprite.png",
+    },
+    {
+      name: "Lemon tea",
+      description: "0.4L Lemon tea.",
+      price: 1.0,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/te-limone.png",
+    },
+    {
+      name: "Peach tea",
+      description: "0.4L Peach tea.",
+      price: 1.0,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/te-pesca.png",
+    },
+    {
+      name: "Heineken",
+      description: "0.5L Heineken.",
+      price: 2.0,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/heineken.png",
+    },
+    {
+      name: "Decaffeinated coffee",
+      description:
+        "Experience the perfection of creamy decaffeineted espresso in a cup.",
+      price: 0.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/decaffeinato.png",
+    },
+    {
+      name: "Espresso",
+      description: "Experience the perfection of creamy espresso in a cup.",
+      price: 0.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/espresso.png",
+    },
+    {
+      name: "Espresso Macchiato",
+      description:
+        "Experience the perfection of creamy espresso macchiato in a cup.",
+      price: 0.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/espresso-macchiato.png",
+    },
+    {
+      name: "Ginseng",
+      description:
+        "With its smooth, slightly sweet flavor, ginseng coffee is an energizing alternative to traditional coffee, blending the rich benefits of ginseng with a deliciously unique taste.",
+      price: 0.5,
+      category: "Beverages",
+      image: "/immagini/prodotti/bevande/ginseng.png",
+    },
+    {
+      name: "Nuggets",
+      description:
+        "Delicious chicken nuggets with a crispy and tasty breading. Every bite will be truly unique.",
+      price: 2.5,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/nuggets.png",
+    },
+    {
+      name: "Fries",
+      description:
+        "Crispy, appetizing and tasty, French fries are a must-have.",
+      price: 2.5,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/fries.png",
+    },
+    {
+      name: "Bacon Fries",
+      description: "French fries with cheddar and bacon.",
+      price: 3.0,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/bacon-fries.png",
+    },
+    {
+      name: "Chili Cheese Bites",
+      description:
+        "Delicious nuggets of melted cheese stuffed with jalapenos covered in a light breading. Take them and enjoy them, one after the other.",
+      price: 2.0,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/chili-cheese.png",
+    },
+    {
+      name: "Chicken Wings",
+      description: "With their unique taste, Chicken Wings will conquer you.",
+      price: 2.5,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/wings.png",
+    },
+    {
+      name: "Tasty Snackbox",
+      description: "Box with onion rings and nuggets.",
+      price: 4.0,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/tasty-box.png",
+    },
+    {
+      name: "Chicken Snackbox",
+      description: "Box with chicken wings and nuggets.",
+      price: 4.0,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/chicken-box.png",
+    },
+    {
+      name: "Friends Snackbox",
+      description: "Box with onion rings, chili cheese bites and nuggets.",
+      price: 4.5,
+      category: "Snack",
+      image: "/immagini/prodotti/snack/friends-box.png",
+    },
   ];
 
-  for (let product of product) {
-    await Product.create(product);
+  for (let item of product) {
+    await Product.create(item);
   }
-  await product.save();
   console.log("Product's table created successfully");
   process.exit();
 })();
