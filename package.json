@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "make-model": "npx sequelize-cli model:generate --name Products --attributes name:string,description:string,price:float,category:string,image:string",
+    "make-seed": "npx sequelize-cli seed:generate --name demo-products",
+    "seed": "npx sequelize-cli db:seed:all",
+    "undo-seed": "npx sequelize-cli db:seed:undo",
+    "migrate": "npx sequelize-cli db:migrate",
+    "down": "npx sequelize-cli db:migrate:undo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,5 +21,8 @@
     "express": "^4.21.1",
     "pg": "^8.13.0",
     "sequelize": "^6.37.4"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
   }
 }
