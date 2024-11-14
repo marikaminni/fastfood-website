@@ -10,6 +10,8 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: "postgres",
+    /*By default, Sequelize will log every SQL query it performs to the console. This may lead to sensitive data (e.g. passwords / hashes) being leaked to the logs. */
+    logging: false,
   }
 );
 
