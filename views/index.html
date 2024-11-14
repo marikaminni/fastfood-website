@@ -217,40 +217,45 @@
           <h2 id="menu">Menu</h2>
         </div>
         <div
-          class="button-container d-flex justify-content-center gap-2 mx-auto"
+          class="button-container d-flex justify-content-center gap-2 mx-auto mb-4"
         >
           <button
-            class="btn btn-outline-danger active"
+            class="category-button btn btn-outline-danger active"
             type="button"
+            data-category="Beef"
             data-bs-toggle="button"
             aria-pressed="true"
           >
             Beef
           </button>
           <button
-            class="btn btn-outline-danger"
+            class="category-button btn btn-outline-danger"
             type="button"
+            data-category="Chicken"
             data-bs-toggle="button"
           >
             Chicken
           </button>
           <button
-            class="btn btn-outline-danger"
+            class="category-button btn btn-outline-danger"
             type="button"
+            data-category="Beverages"
             data-bs-toggle="button"
           >
             Beverages
           </button>
           <button
-            class="btn btn-outline-danger"
+            class="category-button btn btn-outline-danger"
             type="button"
+            data-category="Snack"
             data-bs-toggle="button"
           >
             Snacks
           </button>
           <button
-            class="btn btn-outline-danger"
+            class="category-button btn btn-outline-danger"
             type="button"
+            data-category="Desserts"
             data-bs-toggle="button"
           >
             Desserts
@@ -258,6 +263,14 @@
 
           <!--todo: mettere link della pagina prodotti-->
           <a href="" class="btn btn-outline-danger" role="button">View All</a>
+        </div>
+        <!--todo: sistemare immagini prodotti e layout-->
+        <div
+          class="row row-cols-4 g-4"
+          overflow-x="scroll"
+          id="product-container"
+        >
+          <!--*Prodotti inseriti qui-->
         </div>
       </div>
     </section>
