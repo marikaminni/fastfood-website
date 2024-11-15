@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const { Products } = require("./models");
-
 require("dotenv").config({ path: "./config/.env" });
+
+app.use(express.json());
 app.engine(".html", require("ejs").__express);
 
 app.set("views", path.join(__dirname, "views"));
@@ -14,12 +15,11 @@ app.get("/", (req, res) => {
   res.render("index.html", { googleMapsApiKey: process.env.MAPS_API_KEY });
 });
 
-//Retriveve product from db
+//Retrieve product from db
 app.get("/products", async (req, res) => {
   const category = req.query.category;
   try {
     const products = await Products.findAll({ where: { category } });
-    //console.log("Prodotti trovati:", JSON.stringify(products, null, 2));
     return res.json(products);
   } catch (error) {
     console.error("Errore nel recupero dei prodotti:", error); // Log dell'errore dettagliato
@@ -31,7 +31,10 @@ app.get("/products", async (req, res) => {
 });
 
 app.post("/book-table", (req, res) => {
-  console.log(req.body);
+  //const { name, phone, date, guests, message } = req.body;
+  console.log("Booking data received:", req.body);
+
+  res.json({ message: "Booking successfully" });
 });
 
 const PORT = process.env.PORT || 5500;
