@@ -217,7 +217,7 @@
           <h2 id="menu">Menu</h2>
         </div>
         <div
-          class="button-container d-flex justify-content-center gap-2 mx-auto mb-4"
+          class="button-container d-flex justify-content-center gap-2 mx-auto mb-4 overflow-x-scroll"
         >
           <button
             class="category-button btn btn-outline-danger active"
@@ -283,7 +283,12 @@
         <div class="row gx-5">
           <!--Form-->
           <div class="col-md-6">
-            <form method="post" action="/book-table">
+            <form
+              method="post"
+              action="/book-table"
+              class="needs-validation"
+              novalidate
+            >
               <div class="mb-2">
                 <label for="name" class="form-label">Name</label>
                 <input
@@ -291,7 +296,9 @@
                   class="form-control"
                   id="name"
                   placeholder="Enter your name"
+                  required
                 />
+                <div class="invalid-feedback">Please enter a name.</div>
               </div>
               <div class="mb-2">
                 <label for="phone" class="form-label">Phone</label>
@@ -300,7 +307,11 @@
                   class="form-control"
                   id="phone"
                   placeholder="Enter your phone number"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Please enter a valid phone number.
+                </div>
               </div>
               <div class="mb-2">
                 <label for="datetime-local" class="form-label"
@@ -311,7 +322,11 @@
                   class="form-control"
                   id="datetime-local"
                   placeholder="Enter the date and time"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Please enter valid date and time.
+                </div>
               </div>
               <div class="mb-2">
                 <label for="guests" class="form-label">Guests</label>
@@ -320,7 +335,11 @@
                   class="form-control"
                   id="guests"
                   placeholder="Enter the number of guests"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Please enter number greater than 0.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label">Message</label>
@@ -335,6 +354,29 @@
                 <button type="submit" class="btn btn-danger">Book Now</button>
               </div>
             </form>
+            <!--Toast message-->
+            <div class="toast-container position-relative bottom-0 start-0 p-3">
+              <div
+                class="toast align-items-start"
+                id="form-toast"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+              >
+                <div class="toast-header bg-danger text-white">
+                  <strong class="me-auto">Booking Status</strong>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="toast"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="toast-body">
+                  <!--*Insert the toast message-->
+                </div>
+              </div>
+            </div>
           </div>
           <!--Mappa-->
           <div class="col-md-6 mt-lg-4">
