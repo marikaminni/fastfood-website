@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadProducts(category) {
     try {
       const response = await fetch(`/products?category=${category}`);
-      console.log("Stato della risposta:", response.status); // Log dello stato della risposta
-      console.log("Risposta del server:", response); // Log dell'intera risposta
+      console.log("Stato della risposta:", response.status);
+      console.log("Risposta del server:", response);
 
       if (!response.ok) {
         throw new Error(`Errore HTTP! Status: ${response.status}`);
@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Funzione per visualizzare i prodotti nel container
+  // Visualizza i prodotti nel container
   function displayProducts(products) {
-    productContainer.innerHTML = ""; // Svuota il contenitore
+    productContainer.innerHTML = "";
 
     products.forEach((product) => {
       const productDiv = document.createElement("div");
@@ -73,6 +73,135 @@ document.addEventListener("DOMContentLoaded", () => {
   // Carica i prodotti della categoria predefinita al caricamento della pagina
   loadProducts("Beef");
 });
+
+//Form validation
+(() => {
+  "use strict";
+
+  const nameCheck = document.querySelector("#name");
+  const phoneCheck = document.querySelector("#phone");
+  const dateCheck = document.querySelector("#datetime-local");
+  const guestsCheck = document.querySelector("#guests");
+  const message = document.querySelector("#message");
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll(".needs-validation");
+
+  //Validate fields
+  const checkName = () => {
+    const nameValue = nameCheck.value.trim();
+    const nameRegex = /^[a-zA-Z\s]{3,25}$/;
+
+    if (!nameRegex.test(nameValue)) {
+      nameCheck.setCustomValidity(
+        "Name must be only letters and <= 25 characters."
+      );
+      return false;
+    } else {
+      nameCheck.setCustomValidity("");
+      return true;
+    }
+  };
+
+  const checkPhone = () => {
+    const phoneValue = phoneCheck.value.trim();
+    const phoneRegex = /^\+?[0-9]{10,15}$/;
+    if (!phoneRegex.test(phoneValue)) {
+      phoneCheck.setCustomValidity(
+        "Phone number must be 10-15 digits and may contain a + at the beginning"
+      );
+      return false;
+    } else {
+      phoneCheck.setCustomValidity("");
+      return true;
+    }
+  };
+
+  const checkDate = () => {
+    const dateValue = new Date(dateCheck.value);
+    const currentDate = new Date();
+    if (dateValue < currentDate) {
+      dateCheck.setCustomValidity("Date must be in the future");
+      return false;
+    } else {
+      dateCheck.setCustomValidity("");
+      return true;
+    }
+  };
+
+  const checkGuests = () => {
+    if (guestsCheck.value < 1) {
+      guestsCheck.setCustomValidity("Guests must be at least 1");
+      return false;
+    } else {
+      guestsCheck.setCustomValidity("");
+      return true;
+    }
+  };
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach((form) => {
+    form.addEventListener(
+      "submit",
+      async (event) => {
+        const nameValid = checkName();
+        const phoneValid = checkPhone();
+        const dateValid = checkDate();
+        const guestsValid = checkGuests();
+
+        const isFormValid = nameValid && phoneValid && dateValid && guestsValid;
+
+        if (!isFormValid || !form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+          form.classList.add("was-validated");
+          return;
+        }
+
+        event.preventDefault();
+        const formData = {
+          name: nameCheck.value,
+          phone: phoneCheck.value,
+          date: dateCheck.value,
+          guests: guestsCheck.value,
+          message: message.value,
+        };
+
+        try {
+          // Send form data to the server
+          const response = await fetch("/book-table", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+
+          const data = await response.json();
+          console.log(data);
+
+          if (!response.ok) {
+            throw new Error("Errore HTTP! Status: " + response.status);
+          } else {
+            showToast(data.message);
+          }
+        } catch (error) {
+          console.error("Errore nell'invio della prenotazione:", error);
+        }
+      },
+      false
+    );
+  });
+  //show toast message
+  const showToast = (message) => {
+    const toast = document.querySelector("#form-toast .toast-body");
+    toast.textContent = message;
+    const toastElement = new bootstrap.Toast(
+      document.querySelector("#form-toast")
+    );
+    toastElement.show();
+  };
+})();
 
 // Initialize and add the map
 let map;
