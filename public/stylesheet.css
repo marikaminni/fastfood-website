@@ -8,9 +8,7 @@ body {
   padding: 0;
   background-color: #eee7e4;
 }
-.container-fluid {
-  margin: 20px 20px;
-}
+
 .navbar {
   position: absolute;
   width: 100%;
@@ -18,7 +16,6 @@ body {
 }
 
 .navbar-brand {
-  font-size: x-large;
   font-family: "Trebuchet MS";
   font-weight: bold;
   font-style: italic;
