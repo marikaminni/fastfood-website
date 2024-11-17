@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "make-model": "npx sequelize-cli model:generate --name Products --attributes name:string,description:string,price:float,category:string,image:string",
+    "make-model-product": "npx sequelize-cli model:generate --name Products --attributes name:string,description:string,price:float,category:string,image:string",
+    "make-model-order": "npx sequelize-cli model:generate --name Orders --attributes date:date,items:text,total:float,status:string",
+    "make-model-booking": "npx sequelize-cli model:generate --name Booking --attributes name:string,phone:text,date:date,guest:text,message:text",
     "make-seed": "npx sequelize-cli seed:generate --name demo-products",
     "seed": "npx sequelize-cli db:seed:all",
     "undo-seed": "npx sequelize-cli db:seed:undo",
