@@ -139,6 +139,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const checkMessage = () => {
+    const messageValue = message.value.trim();
+    const wordCount = messageValue.split(/\s+/).length;
+    if (wordCount > 100) {
+      message.setCustomValidity("Message must be less than 100 words");
+      return false;
+    } else {
+      message.setCustomValidity("");
+      return true;
+    }
+  };
+
   // Loop over them and prevent submission
   Array.from(forms).forEach((form) => {
     form.addEventListener(
@@ -148,8 +160,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const phoneValid = checkPhone();
         const dateValid = checkDate();
         const guestsValid = checkGuests();
+        const messageValid = checkMessage();
 
-        const isFormValid = nameValid && phoneValid && dateValid && guestsValid;
+        const isFormValid =
+          nameValid && phoneValid && dateValid && guestsValid && messageValid;
 
         if (!isFormValid || !form.checkValidity()) {
           event.preventDefault();
