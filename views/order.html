@@ -73,7 +73,7 @@
                     src="/immagini/prodotti/categorie/manzo.png"
                     class="img-fluid mx-auto d-block object-fit-contain"
                   />
-                  <div class="text-center" data-category="Beef">Beef</div>
+                  <div class="text-center">Beef</div>
                 </div>
               </li>
               <li>
@@ -95,7 +95,7 @@
                 </div>
               </li>
               <li>
-                <div class="text-center pb-5" data-category="Dessert">
+                <div class="text-center pb-5" data-category="Desserts">
                   <img
                     src="/immagini/prodotti/categorie/dessert.png"
                     class="img-fluid mx-auto d-block object-fit-contain"
@@ -119,6 +119,48 @@
           </div>
         </div>
       </section>
+
+      <!--Product list-->
+      <section class="order-product layout-padding-bottom">
+        <div class="container">
+          <div class="row justify-content-center">
+            <!--*Products will be inserted here-->
+          </div>
+        </div>
+      </section>
+      <!--Product modal-->
+      <!--todo: fix modal layout-->
+      <div
+        class="modal fade"
+        id="productModal"
+        tabindex="-1"
+        aria-labelledby="productModalLabel"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fs-5">Modal title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body d-flex">
+              <img
+                src=""
+                alt="Product image"
+                class="img-fluid me-3 w-50 object-fit-cover border rounded"
+              />
+              <div class="description"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!--Footer-->
       <footer class="bg-dark text-white text-center py-3">
@@ -184,6 +226,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"
       ></script>
+      <script src="/order.js" defer></script>
     </body>
   </head>
 </html>
