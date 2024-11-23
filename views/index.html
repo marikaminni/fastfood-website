@@ -23,6 +23,17 @@
       type="text/css"
       href="https://npmcdn.com/flatpickr/dist/themes/dark.css"
     />
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="/stylesheet.css" />
     <title>Burger Bros</title>
     <link rel="icon" type="image/png" href="/immagini/burger-icon.png" />
@@ -31,7 +42,7 @@
     <!--TODO: aggiungi margine sistemare link al centro anche quando c'è toggle e allineamento del logo con la scritta-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="#">
           <img
             src="/immagini/burger-icon.png"
             alt="burger icon"
@@ -53,9 +64,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html"
-                >Home</a
-              >
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
@@ -221,7 +230,9 @@
     </section>
     <!--Sezione Menu-->
     <section class="menu-section layout-padding-bottom">
-      <div class="container">
+      <div
+        class="swiffy-slider slider-item-show3 slider-item-reveal slider-nav-outside slider-nav-caretfill"
+      >
         <div class="menu-title text-center mb-3">
           <h2 id="menu">Menu</h2>
         </div>
@@ -274,14 +285,12 @@
             >View All</a
           >
         </div>
-        <!--todo: sistemare immagini prodotti e layout-->
-        <div
-          class="row row-cols-4 g-4"
-          overflow-x="scroll"
-          id="product-container"
-        >
+        <!--todo: sistemare layout-->
+        <div class="slider-container row" id="product-container">
           <!--*Prodotti inseriti qui-->
         </div>
+        <button type="button" class="slider-nav"></button>
+        <button type="button" class="slider-nav slider-nav-next"></button>
       </div>
     </section>
     <!--Sezione Book table e mappa-->
