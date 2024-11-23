@@ -1,7 +1,17 @@
 //create product items
 document.addEventListener("DOMContentLoaded", () => {
   const productContainer = document.querySelector(".order-product .row");
+  const cartList = document.querySelector(".offcanvas-body .list-group");
+  const cartTotal = document.querySelector(".total-price");
+  const cartButton = document.querySelector(".cart-button");
+  const badge = cartButton.querySelector(".badge");
+  var cart = new Map();
 
+  if (localStorage.getItem("cart") === null) {
+    localStorage.setItem("cart", JSON.stringify(Array.from(cart.entries())));
+  } else {
+    cart = new Map(JSON.parse(localStorage.getItem("cart")));
+  }
   // Funzione per ottenere i prodotti da una categoria
   async function loadProducts(category) {
     try {
@@ -12,9 +22,112 @@ document.addEventListener("DOMContentLoaded", () => {
       const products = await response.json();
       console.log("Prodotti caricati:", products);
       displayProducts(products);
+      renderCart();
+      updateTotal();
+      updateBadge();
     } catch (error) {
       console.error("Errore nel caricamento dei prodotti:", error);
     }
+  }
+  //update cart badge
+  function updateBadge() {
+    let totalQuantity = 0;
+    cart.forEach((item) => {
+      totalQuantity += item.quantity;
+    });
+    badge.textContent = totalQuantity;
+  }
+  function removeItem(product) {
+    var quantity = cart.get(product.id).quantity;
+    if (quantity > 1) {
+      cart.get(product.id).quantity = quantity - 1;
+    } else {
+      cart.delete(product.id);
+    }
+    localStorage.setItem("cart", JSON.stringify(Array.from(cart.entries())));
+  }
+  //Cart logic
+  function updateCart(product) {
+    if (cart.has(product.id)) {
+      const quantity = cart.get(product.id).quantity + 1;
+      cart.set(product.id, { quantity, ...product });
+    } else {
+      cart.set(product.id, { quantity: 1, ...product });
+    }
+    renderCart();
+    updateTotal();
+    localStorage.setItem("cart", JSON.stringify(Array.from(cart.entries())));
+  }
+
+  function renderCart() {
+    cartList.innerHTML = "";
+    console.log(cart);
+    cart.forEach((item) => {
+      const li = document.createElement("li");
+      li.classList.add(
+        "list-group-item",
+        "d-flex",
+        "justify-content-between",
+        "align-items-center"
+      );
+      const itemDiv = document.createElement("div");
+      itemDiv.classList.add(
+        "d-flex",
+        "flex-column",
+        "justify-content-center",
+        "flex-grow-1"
+      );
+      const itemImg = document.createElement("img");
+      itemImg.classList.add(
+        "img-fluid",
+        "rounded",
+        "object-fit-cover",
+        "me-3",
+        "w-25",
+        "h-25"
+      );
+
+      const minus = document.createElement("button");
+      minus.classList.add("btn", "btn-danger", "btn-sm", "ms-2");
+      minus.textContent = "X";
+      minus.addEventListener("click", (e) => {
+        e.stopPropagation();
+        removeItem(item);
+        renderCart();
+        updateTotal();
+        updateBadge();
+      });
+
+      itemImg.src = item.image;
+      const namequantity = document.createElement("span");
+      namequantity.textContent = `${item.name} x ${item.quantity}`;
+      const itemPrice = document.createElement("span");
+      itemPrice.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+
+      itemDiv.appendChild(namequantity);
+      itemDiv.appendChild(itemImg);
+
+      li.appendChild(itemDiv);
+      li.appendChild(itemPrice);
+      li.appendChild(minus);
+      cartList.appendChild(li);
+    });
+  }
+
+  function updateTotal() {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    cartTotal.textContent = `$${total.toFixed(2)}`;
+  }
+
+  function addQuantityEvent(product, plus) {
+    plus.addEventListener("click", (e) => {
+      e.stopPropagation();
+      updateCart(product);
+      updateBadge();
+    });
   }
 
   // Visualizza i prodotti nel container
@@ -47,37 +160,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const productQuantity = document.createElement("div");
       productQuantity.classList.add("d-flex", "justify-content-center");
 
-      const minus = document.createElement("button");
-      minus.classList.add("btn", "btn-danger", "btn-sm", "me-2");
-      minus.textContent = "-";
-      minus.disabled = true;
-
-      const quantityDisplay = document.createElement("span");
-      quantityDisplay.classList.add("badge", "bg-secondary", "rounded-pill");
-      quantityDisplay.textContent = "0";
-
       const plus = document.createElement("button");
       plus.classList.add("btn", "btn-danger", "btn-sm", "ms-2");
-      plus.textContent = "+";
+      plus.textContent = "Add to cart";
 
-      plus.addEventListener("click", () => {
-        let quantity = parseInt(quantityDisplay.textContent, 10);
-        quantity++;
-        quantityDisplay.textContent = quantity;
-        minus.disabled = false;
-      });
+      addQuantityEvent(product, plus);
 
-      minus.addEventListener("click", () => {
-        let quantity = parseInt(quantityDisplay.textContent, 10);
-        if (quantity > 0) {
-          quantity--;
-          quantityDisplay.textContent = quantity;
-        }
-        minus.disabled = quantity === 0;
-      });
-
-      productQuantity.appendChild(minus);
-      productQuantity.appendChild(quantityDisplay);
       productQuantity.appendChild(plus);
 
       cardBody.appendChild(productName);
@@ -110,6 +198,47 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+  //send order
+  document.getElementById("checkout").addEventListener("click", () => {
+    var dataToSend = {};
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    dataToSend.productlist = [];
+    dataToSend.total = total;
+    cart.forEach((item) => {
+      for (let i = 0; i < item.quantity; i++) {
+        dataToSend.productlist.push(item.id);
+      }
+    });
+    try {
+      fetch("/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataToSend),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          cart.clear();
+          localStorage.setItem(
+            "cart",
+            JSON.stringify(Array.from(cart.entries()))
+          );
+          renderCart();
+          updateTotal();
+          updateBadge();
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
   // Carica i prodotti della categoria predefinita al caricamento della pagina
   loadProducts("Beef");
 });
