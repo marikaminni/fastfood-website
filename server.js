@@ -26,7 +26,7 @@ app.post("/order", (req, res) => {
     Orders.create({
       date: Date.now(),
       items: JSON.stringify(req.body.productlist),
-      total: -1,
+      total: JSON.stringify(req.body.total),
       status: "ordered",
     });
   } catch (error) {
