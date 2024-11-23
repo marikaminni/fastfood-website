@@ -44,6 +44,30 @@
             />
             Burger Bros
           </a>
+          <button
+            class="cart-button btn btn-danger position-relative"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#cartOffcanvas"
+            aria-controls="cartOffcanvas"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-cart-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
+              />
+            </svg>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"
+              >0
+            </span>
+          </button>
         </div>
       </nav>
       <!--Main image-->
@@ -62,61 +86,59 @@
       <!--Product slider-->
       <!--!quando lo schermo è più piccolo è tutto disallineato-->
       <section class="container text-center mb-4">
-        <div class="container-fluid container-1600 px-0">
-          <div
-            class="swiffy-slider slider-item-show5 slider-item-reveal slider-nav-round"
-          >
-            <ul class="slider-container d-flex justify-content-between">
-              <li>
-                <div class="text-center pb-5" data-category="Beef">
-                  <img
-                    src="/immagini/prodotti/categorie/manzo.png"
-                    class="img-fluid mx-auto d-block object-fit-contain"
-                  />
-                  <div class="text-center">Beef</div>
-                </div>
-              </li>
-              <li>
-                <div class="text-center pb-5" data-category="Chicken">
-                  <img
-                    src="/immagini/prodotti/categorie/pollo.png"
-                    class="img-fluid mx-auto d-block object-fit-contain"
-                  />
-                  <div class="text-center">Chicken</div>
-                </div>
-              </li>
-              <li>
-                <div class="text-center pb-5" data-category="Snack">
-                  <img
-                    src="/immagini/prodotti/categorie/snack.png"
-                    class="img-fluid mx-auto d-block object-fit-contain"
-                  />
-                  <div class="text-center">Snack</div>
-                </div>
-              </li>
-              <li>
-                <div class="text-center pb-5" data-category="Desserts">
-                  <img
-                    src="/immagini/prodotti/categorie/dessert.png"
-                    class="img-fluid mx-auto d-block object-fit-contain"
-                  />
-                  <div class="text-center">Dessert</div>
-                </div>
-              </li>
-              <li>
-                <div class="text-center pb-5" data-category="Beverages">
-                  <img
-                    src="/immagini/prodotti/categorie/bevande.png"
-                    class="img-fluid mx-auto d-block object-fit-contain"
-                  />
-                  <div class="text-center">Beverages</div>
-                </div>
-              </li>
-            </ul>
+        <div
+          class="swiffy-slider slider-item-show3 slider-item-reveal slider-nav-outside slider-nav-round"
+        >
+          <ul class="slider-container d-flex justify-content-between">
+            <li>
+              <div class="text-center pb-5" data-category="Beef">
+                <img
+                  src="/immagini/prodotti/categorie/manzo.png"
+                  class="img-fluid mx-auto d-block object-fit-contain"
+                />
+                <div class="text-center">Beef</div>
+              </div>
+            </li>
+            <li>
+              <div class="text-center pb-5" data-category="Chicken">
+                <img
+                  src="/immagini/prodotti/categorie/pollo.png"
+                  class="img-fluid mx-auto d-block object-fit-contain"
+                />
+                <div class="text-center">Chicken</div>
+              </div>
+            </li>
+            <li>
+              <div class="text-center pb-5" data-category="Snack">
+                <img
+                  src="/immagini/prodotti/categorie/snack.png"
+                  class="img-fluid mx-auto d-block object-fit-contain"
+                />
+                <div class="text-center">Snack</div>
+              </div>
+            </li>
+            <li>
+              <div class="text-center pb-5" data-category="Desserts">
+                <img
+                  src="/immagini/prodotti/categorie/dessert.png"
+                  class="img-fluid mx-auto d-block object-fit-contain"
+                />
+                <div class="text-center">Dessert</div>
+              </div>
+            </li>
+            <li>
+              <div class="text-center pb-5" data-category="Beverages">
+                <img
+                  src="/immagini/prodotti/categorie/bevande.png"
+                  class="img-fluid mx-auto d-block object-fit-contain"
+                />
+                <div class="text-center">Beverages</div>
+              </div>
+            </li>
+          </ul>
 
-            <button type="button" class="slider-nav"></button>
-            <button type="button" class="slider-nav slider-nav-next"></button>
-          </div>
+          <button type="button" class="slider-nav"></button>
+          <button type="button" class="slider-nav slider-nav-next"></button>
         </div>
       </section>
 
@@ -159,6 +181,39 @@
               <div class="description"></div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!--Cart-->
+      <!--!badge non si vede è tutto spostato in alto a destra-->
+      <!--TODO: posizionare sidebar at the bottom su screen piccoli-->
+      <div
+        class="offcanvas offcanvas-end rounded"
+        data-bs-scroll="true"
+        tabindex="-1"
+        id="cartOffcanvas"
+        aria-labelledby="cartOffcanvasLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="cartOffcanvasLabel">My order</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-group list-group-flush">
+            <!--*Cart items will be inserted here-->
+          </ul>
+          <div class="offcanvas-footer d-flex justify-content-between fw-bold">
+            <span>Total:</span>
+            <span class="total-price">0.00</span>
+          </div>
+          <button id="checkout" type="button" class="btn btn-dark w-100 mt-3">
+            Checkout
+          </button>
         </div>
       </div>
 
