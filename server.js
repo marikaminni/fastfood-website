@@ -1,10 +1,17 @@
 const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const app = express();
 const path = require("path");
-const { Products, Orders, Booking } = require("./models");
+const { Products, Orders, Booking, User } = require("./models");
+const authRoute = require("./routes/auth.route");
 require("dotenv").config({ path: "./config/.env" });
 
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/api", authRoute);
+app.use(cookieParser());
 app.engine(".html", require("ejs").__express);
 
 app.set("views", path.join(__dirname, "views"));
@@ -17,6 +24,14 @@ app.get("/", (req, res) => {
 
 app.get("/order", (req, res) => {
   res.render("order.html");
+});
+
+app.get("/login", (req, res) => {
+  res.render("login.html");
+});
+
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard.html");
 });
 
 //send order
