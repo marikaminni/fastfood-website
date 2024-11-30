@@ -136,18 +136,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     products.forEach((product) => {
       const productDiv = document.createElement("div");
-      productDiv.classList.add("col", "col-lg-3", "col-md-6", "mb-5");
+      productDiv.classList.add(
+        "col-12",
+        "col-lg-3",
+        "col-md-4",
+        "col-sm-6",
+        "mb-4"
+      );
       const cardDiv = document.createElement("div");
-      cardDiv.classList.add("card", "h-100");
+      cardDiv.classList.add("card", "h-100", "d-flex", "flex-column");
 
       const img = document.createElement("img");
       img.src = product.image;
       img.alt = product.name;
-      img.classList.add("product-image", "card-image-top", "d-block", "w-100");
+      img.classList.add("product-image", "card-image-top");
       img.addEventListener("click", () => showDetails(product));
 
       const cardBody = document.createElement("div");
-      cardBody.classList.add("card-body");
+      cardBody.classList.add(
+        "card-body",
+        "d-flex",
+        "flex-column",
+        "justify-content-between"
+      );
 
       const productName = document.createElement("h5");
       productName.classList.add("card-title");
@@ -157,20 +168,15 @@ document.addEventListener("DOMContentLoaded", () => {
       productPrice.classList.add("card-text");
       productPrice.textContent = `$${product.price}`;
 
-      const productQuantity = document.createElement("div");
-      productQuantity.classList.add("d-flex", "justify-content-center");
-
       const plus = document.createElement("button");
-      plus.classList.add("btn", "btn-danger", "btn-sm", "ms-2");
+      plus.classList.add("btn", "btn-danger", "mt-auto");
       plus.textContent = "Add to cart";
 
       addQuantityEvent(product, plus);
 
-      productQuantity.appendChild(plus);
-
       cardBody.appendChild(productName);
       cardBody.appendChild(productPrice);
-      cardBody.appendChild(productQuantity);
+      cardBody.appendChild(plus);
       cardDiv.appendChild(img);
       cardDiv.appendChild(cardBody);
       productDiv.appendChild(cardDiv);
