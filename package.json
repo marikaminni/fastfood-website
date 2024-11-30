@@ -6,6 +6,7 @@
     "make-model-product": "npx sequelize-cli model:generate --name Products --attributes name:string,description:string,price:float,category:string,image:string",
     "make-model-order": "npx sequelize-cli model:generate --name Orders --attributes date:date,items:text,total:float,status:string",
     "make-model-booking": "npx sequelize-cli model:generate --name Booking --attributes name:string,phone:text,date:date,guest:text,message:text",
+    "make-model-user": "npx sequelize-cli model:generate --name User --attributes name:string,password:string",
     "make-seed": "npx sequelize-cli seed:generate --name demo-products",
     "seed": "npx sequelize-cli db:seed:all",
     "undo-seed": "npx sequelize-cli db:seed:undo",
@@ -18,9 +19,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.4"
