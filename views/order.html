@@ -84,55 +84,55 @@
         </div>
       </div>
       <!--Product slider-->
-      <!--!quando lo schermo è più piccolo è tutto disallineato-->
-      <section class="container text-center mb-4">
+      <!--todo:fare underline più piccola, sistemare grandezza slider per schermi medi-->
+      <section class="mb-4">
         <div
-          class="swiffy-slider slider-item-show3 slider-item-reveal slider-nav-outside slider-nav-round"
+          class="swiffy-slider slider-item-show4 slider-item-show3-md slider-nav-outside slider-nav-round"
         >
-          <ul class="slider-container d-flex justify-content-between">
-            <li>
+          <ul class="slider-container nav nav-underline">
+            <li class="nav-item">
               <div class="text-center pb-5" data-category="Beef">
                 <img
                   src="/immagini/prodotti/categorie/manzo.png"
-                  class="img-fluid mx-auto d-block object-fit-contain"
+                  class="image-fluid h-50 w-50 object-fit-contain"
                 />
-                <div class="text-center">Beef</div>
+                <a class="text-center nav-link active">Beef</a>
               </div>
             </li>
-            <li>
+            <li class="nav-item">
               <div class="text-center pb-5" data-category="Chicken">
                 <img
                   src="/immagini/prodotti/categorie/pollo.png"
-                  class="img-fluid mx-auto d-block object-fit-contain"
+                  class="img-fluid h-50 w-50 object-fit-contain"
                 />
-                <div class="text-center">Chicken</div>
+                <a class="text-center nav-link text-muted">Chicken</a>
               </div>
             </li>
-            <li>
+            <li class="nav-item">
               <div class="text-center pb-5" data-category="Snack">
                 <img
                   src="/immagini/prodotti/categorie/snack.png"
-                  class="img-fluid mx-auto d-block object-fit-contain"
+                  class="img-fluid h-50 w-50 object-fit-contain"
                 />
-                <div class="text-center">Snack</div>
+                <a class="text-center nav-link text-muted">Snack</a>
               </div>
             </li>
-            <li>
+            <li class="nav-item">
               <div class="text-center pb-5" data-category="Desserts">
                 <img
                   src="/immagini/prodotti/categorie/dessert.png"
-                  class="img-fluid mx-auto d-block object-fit-contain"
+                  class="img-fluid h-50 w-50 object-fit-contain"
                 />
-                <div class="text-center">Dessert</div>
+                <a class="text-center nav-link text-muted">Dessert</a>
               </div>
             </li>
-            <li>
+            <li class="nav-item">
               <div class="text-center pb-5" data-category="Beverages">
                 <img
                   src="/immagini/prodotti/categorie/bevande.png"
-                  class="img-fluid mx-auto d-block object-fit-contain"
+                  class="img-fluid h-50 w-50 object-fit-contain"
                 />
-                <div class="text-center">Beverages</div>
+                <a class="text-center nav-link text-muted">Beverages</a>
               </div>
             </li>
           </ul>
@@ -145,13 +145,13 @@
       <!--Product list-->
       <section class="order-product layout-padding-bottom">
         <div class="container">
-          <div class="row justify-content-center">
+          <div class="row">
             <!--*Products will be inserted here-->
           </div>
         </div>
       </section>
+
       <!--Product modal-->
-      <!--todo: fix modal layout-->
       <div
         class="modal fade"
         id="productModal"
@@ -164,7 +164,7 @@
         >
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title fs-5">Modal title</h5>
+              <h5 class="modal-title fs-5 fw-1">Modal title</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -173,20 +173,29 @@
               ></button>
             </div>
             <div class="modal-body d-flex">
-              <img
-                src=""
-                alt="Product image"
-                class="img-fluid me-3 w-50 object-fit-cover border rounded"
-              />
-              <div class="description"></div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <img
+                      src=""
+                      alt="Product image"
+                      class="img-fluid mx-auto m-2 w-100 object-fit-cover rounded"
+                    />
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div
+                      class="description-title fs-4 fw-bold text-start"
+                    ></div>
+                    <div class="description text-start mb-5"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!--Cart-->
-      <!--!badge non si vede è tutto spostato in alto a destra-->
-      <!--TODO: posizionare sidebar at the bottom su screen piccoli-->
       <div
         class="offcanvas offcanvas-end rounded"
         data-bs-scroll="true"
