@@ -23,7 +23,10 @@ body {
   width: 100%;
   object-fit: cover;
 }
-
+.modal-header {
+  background-color: #d5ccc8;
+  color: black;
+}
 /* Stile per il footer */
 .contact-info a,
 .social-links a {

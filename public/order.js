@@ -188,6 +188,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("productModal");
     modal.querySelector(".modal-title").textContent = product.name;
     modal.querySelector(".modal-body img").src = product.image;
+    modal.querySelector(".modal-body .description-title").textContent =
+      product.name;
     modal.querySelector(".modal-body .description").textContent =
       product.description;
     const bootstrapModal = new bootstrap.Modal(modal);
@@ -199,25 +201,49 @@ document.addEventListener("DOMContentLoaded", () => {
     .forEach((categoryDiv) => {
       categoryDiv.addEventListener("click", () => {
         const selectedCategory = categoryDiv.getAttribute("data-category");
+        //evidenzia la categoria selezionata
+        updateActiveCategory(categoryDiv);
         // Carica i prodotti della categoria selezionata
         loadProducts(selectedCategory);
       });
     });
 
+  function updateActiveCategory(activeCategory) {
+    document
+      .querySelectorAll(".slider-container .nav-link")
+      .forEach((navLink) => {
+        navLink.classList.remove("active", "text-black");
+        navLink.classList.add("text-muted");
+      });
+
+    const activeLink = activeCategory.querySelector(".nav-link");
+    activeLink.classList.add("active", "text-black");
+    activeLink.classList.remove("text-muted");
+  }
+
   //send order
   document.getElementById("checkout").addEventListener("click", () => {
-    var dataToSend = {};
-    let total = 0;
+    var dataToSend = {
+      productlist: new Map(),
+      total: 0,
+    };
     cart.forEach((item) => {
-      total += item.price * item.quantity;
-    });
-    dataToSend.productlist = [];
-    dataToSend.total = total;
-    cart.forEach((item) => {
-      for (let i = 0; i < item.quantity; i++) {
-        dataToSend.productlist.push(item.id);
+      dataToSend.total += item.price * item.quantity;
+      if (dataToSend.productlist.has(item.id)) {
+        const exist = dataToSend.productlist.get(item.id);
+        exist.quantity += item.quantity;
+        dataToSend.productlist.set(item.id, exist);
+      } else {
+        dataToSend.productlist.set(item.id, {
+          id: item.id,
+          name: item.name,
+          quantity: item.quantity,
+        });
       }
     });
+
+    // Convert Map to an array for serialization
+    dataToSend.productlist = Array.from(dataToSend.productlist.values());
     try {
       fetch("/order", {
         method: "POST",
