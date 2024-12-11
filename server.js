@@ -68,10 +68,11 @@ app.get("/orders", async (req, res) => {
 //Update orders status
 app.patch("/orders", async (req, res) => {
   const id = req.query.id;
+  const newStatus = req.body.status;
   try {
     await Orders.update(
       {
-        status: "delivered",
+        status: newStatus,
       },
       {
         where: { id: id },
@@ -81,7 +82,7 @@ app.patch("/orders", async (req, res) => {
   } catch (error) {
     console.error("Error unable to update order:", error);
     if (!res.headersSent) {
-      res.status(500).send("Errore nel recupero degli ordini");
+      res.status(500).send("Errore nell'aggiornamento degli ordini");
     }
   }
 });
