@@ -23,6 +23,35 @@ body {
   width: 100%;
   object-fit: cover;
 }
+
+/*Product slider*/
+.slider {
+  background-color: #e7dbd6;
+  backdrop-filter: blur(10px);
+}
+
+.nav-underline .nav-link {
+  display: inline-block;
+  width: 50%;
+}
+.nav-underline .nav-link.active {
+  display: inline-block;
+  width: 50%;
+}
+
+.nav-underline .nav-link:hover {
+  display: inline-block;
+  width: 50%;
+}
+
+/*card*/
+.card:hover {
+  transform: scale(1.03);
+  transition: transform 0.5s;
+  background-color: #212529;
+  color: white;
+}
+
 .modal-header {
   background-color: #d5ccc8;
   color: black;
@@ -36,7 +65,7 @@ body {
 
 .contact-info a:hover,
 .social-links a:hover {
-  color: #ef5637ee;
+  color: #dc3545;
 }
 
 .social-links p {
