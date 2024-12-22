@@ -144,7 +144,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "mb-4"
       );
       const cardDiv = document.createElement("div");
-      cardDiv.classList.add("card", "h-100", "d-flex", "flex-column");
+      cardDiv.classList.add(
+        "card",
+        "h-100",
+        "d-flex",
+        "flex-column",
+        "border-0",
+        "shadow-sm"
+      );
 
       const img = document.createElement("img");
       img.src = product.image;
