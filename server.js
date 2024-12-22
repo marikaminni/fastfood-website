@@ -34,6 +34,10 @@ app.get("/dashboard", (req, res) => {
   res.render("dashboard.html");
 });
 
+/*app.get("/404", (req, res) => {
+  res.render("404.html");
+});*/
+
 //send order
 app.post("/order", (req, res) => {
   console.log("Order data received:", req.body);
@@ -166,6 +170,11 @@ app.delete("/book-table", async (req, res) => {
       res.status(500).send("Errore nell'eliminazione della prenotazione");
     }
   }
+});
+
+//404 page
+app.use((req, res, next) => {
+  res.status(404).render("404.html");
 });
 
 const PORT = process.env.PORT || 5500;
