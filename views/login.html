@@ -40,6 +40,12 @@
                 novalidate
               >
                 <h2 class="text-center">Signin</h2>
+
+                <div
+                  class="invalid-credentials text-danger text-center d-none mb-2"
+                  id="errorCredentials"
+                ></div>
+
                 <div class="mb-3">
                   <label for="signinUsername" class="form-label"
                     >Username</label
@@ -52,7 +58,7 @@
                     placeholder="Enter username"
                     required
                   />
-                  <div class="invalid-feedback">Please enter a username.</div>
+                  <div class="invalid-feedback"></div>
                 </div>
                 <div class="mb-3">
                   <label for="signinPassword" class="form-label"
@@ -66,9 +72,7 @@
                     placeholder="Enter password"
                     required
                   />
-                  <div class="invalid-feedback">
-                    Please enter a valid password.
-                  </div>
+                  <div class="invalid-feedback"></div>
                 </div>
                 <button
                   type="submit"
@@ -132,12 +136,12 @@
                     placeholder="Enter password"
                     required
                   />
-                  <div class="invalid-feedback">Passwords doesn't match.</div>
+                  <div class="invalid-feedback">Passwords do not match.</div>
                 </div>
                 <button
                   type="submit "
                   id="signupButton"
-                  class="btn btn-outline-dark col w-100 mb-2"
+                  class="btn btn-dark col w-100 mb-2"
                 >
                   Signup
                 </button>

@@ -21,7 +21,7 @@ signupNav.addEventListener("click", () => {
   signinForm.classList.add("d-none");
 });
 
-//Form validation
+//!Signin input remain "valid" after invalid credentials
 (() => {
   "use strict";
 
@@ -34,48 +34,91 @@ signupNav.addEventListener("click", () => {
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const forms = document.querySelectorAll(".needs-validation");
 
+  function showError(input, message) {
+    input.classList.add("is-invalid");
+    input.classList.remove("is-valid");
+    const feedback = input.nextElementSibling; //.invalid-feedback
+    if (feedback) {
+      feedback.innerHTML = message;
+    }
+  }
+
+  function clearError(input) {
+    input.classList.remove("is-invalid");
+    input.classList.add("is-valid");
+  }
+
   //Validate signin fields
   function validateSignin() {
-    if (signinUser.value === "" || signinPassword.value === "") {
-      return false;
+    let isValid = true;
+    if (signinUser.value.trim() === "") {
+      showError(signinUser, "Please enter username");
+      isValid = false;
     } else {
-      return true;
+      clearError(signinUser);
     }
+    if (signinPassword.value.trim() === "") {
+      showError(signinPassword, "Please enter password");
+      isValid = false;
+    } else {
+      clearError(signinPassword);
+    }
+    return isValid;
   }
 
   //Validate signup fields
   function checkUsername() {
     const usernameValue = signupUser.value.trim();
-    const usernameRegex = /^[a-zA-Z0-9]{3,10}$/;
-
-    if (!usernameRegex.test(usernameValue)) {
+    const min = 3,
+      max = 10;
+    if (usernameValue.length < min || usernameValue.length > max) {
+      showError(
+        signupUser,
+        `Username must be between ${min} and ${max} characters`
+      );
       return false;
-    } else {
-      return true;
     }
+    clearError(signupUser);
+    return true;
   }
 
   function checkPassword() {
+    const passwordValue = signupPassword.value.trim();
     const passwordRegex = new RegExp(
-      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,20})"
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
     );
-    if (passwordRegex.test(signupPassword.value.trim())) {
-      return true;
-    } else {
+
+    if (!passwordValue) {
+      showError(signupPassword, "Cannot be blank");
+      return false;
+    } else if (!passwordRegex.test(passwordValue)) {
+      showError(
+        signupPassword,
+        "Password must contain at least one uppercase, one lowercase, one number and one special character in (!@#$%^&*)."
+      );
       return false;
     }
+    clearError(signupPassword);
+    return true;
   }
 
   function checkConfirmPassword() {
-    if (signupPassword.value === confirmPassword.value) {
-      return true;
-    } else {
+    const passwordValue = signupPassword.value.trim();
+    const confirmValue = confirmPassword.value.trim();
+    if (!confirmValue) {
+      showError(confirmPassword, "Cannot be blank");
+      return false;
+    } else if (passwordValue !== confirmValue) {
+      showError(confirmPassword, "Passwords do not match");
       return false;
     }
+    clearError(confirmPassword);
+    return true;
   }
 
   //handle signin
   async function handleSignin(username, password) {
+    const signinError = document.getElementById("errorCredentials");
     try {
       const response = await fetch("/api/signin", {
         method: "POST",
@@ -88,9 +131,16 @@ signupNav.addEventListener("click", () => {
         }),
       });
       if (!response.ok) {
+        if (response.status === 404) {
+          signinError.classList.remove("d-none");
+          signinError.innerHTML = "Invalid username or password";
+          return;
+        }
         console.log("HTTP Error: ", response);
         throw new Error(`HTTP Error: ${response.status}`);
       }
+      signinError.classList.add("d-none");
+
       const data = await response.json();
       if (data.accessToken) {
         sessionStorage.setItem("accessToken", data.accessToken);
@@ -104,6 +154,33 @@ signupNav.addEventListener("click", () => {
     }
   }
 
+  //handle signup
+  async function handleSignup(username, password) {
+    try {
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: username,
+          password: password,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        alert(data.message);
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      alert(data.message);
+      //Automatic login after signup
+      await handleSignin(username, password);
+    } catch (error) {
+      console.error("Error during signup or automatic login");
+    }
+  }
+
   // Loop over them and prevent submission
   Array.from(forms).forEach((form) => {
     form.addEventListener(
@@ -112,50 +189,28 @@ signupNav.addEventListener("click", () => {
         event.preventDefault();
         event.stopPropagation();
 
-        const signinValid = validateSignin();
-        const signupValid =
-          checkUsername() && checkPassword() && checkConfirmPassword();
-        if (
-          !form.checkValidity() ||
-          (!signinValid && form.id === "signinForm") ||
-          (!signupValid && form.id === "signupForm")
-        ) {
-          alert("Invalid form data");
+        let isValid = true;
+        if (form.id === "signinForm") {
+          isValid = validateSignin();
+          if (isValid) {
+            await handleSignin(signinUser.value, signinPassword.value);
+          }
+        } else if (form.id === "signupForm") {
+          const userValid = checkUsername();
+          const passwordValid = checkPassword();
+          const confirmValid = checkConfirmPassword();
+          isValid = userValid && passwordValid && confirmValid;
+          if (isValid) {
+            await handleSignup(signupUser.value, signupPassword.value);
+          }
+        }
+
+        if (!isValid) {
+          console.log("Validation failed");
+          return;
         }
 
         form.classList.add("was-validated");
-
-        //Sign in
-        if (form.id === "signinForm") {
-          event.preventDefault();
-          handleSignin(signinUser.value, signinPassword.value);
-        } else if (form.id === "signupForm") {
-          //Sign up
-          try {
-            event.preventDefault();
-            const response = await fetch("/api/signup", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                name: signupUser.value,
-                password: signupPassword.value,
-              }),
-            });
-            const data = await response.json();
-            if (data.message) {
-              alert(data.message);
-              //Automatic login after signup
-              handleSignin(signupUser.value, signupPassword.value);
-            }
-          } catch (error) {
-            console.error(
-              "Errore durante signup o il login automatico:",
-              error
-            );
-          }
-        }
       },
       false
     );
