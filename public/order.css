@@ -30,6 +30,24 @@ body {
   backdrop-filter: blur(10px);
 }
 
+@media (max-width: 62rem) {
+  .swiffy-slider.slider-item-show2-sm {
+    --swiffy-slider-item-count: 3;
+  }
+}
+
+@media (max-width: 42rem) {
+  .swiffy-slider.slider-item-show2-sm {
+    --swiffy-slider-item-count: 2;
+  }
+}
+
+@media (max-width: 22rem) {
+  .swiffy-slider.slider-item-show2-sm {
+    --swiffy-slider-item-count: 1;
+  }
+}
+
 .nav-underline .nav-link {
   display: inline-block;
   width: 50%;
@@ -44,7 +62,7 @@ body {
   width: 50%;
 }
 
-/*card*/
+/*Product card*/
 .card:hover {
   transform: scale(1.03);
   transition: transform 0.5s;
