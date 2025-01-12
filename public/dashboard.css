@@ -6,17 +6,13 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-image: #dfdddd;
 }
 
 .header {
-  background-color: #e3e3e3;
-  z-index: 1040;
-  margin: left 70px;
+  background-color: #fefefe;
 }
 
-#sidebar {
-  z-index: 1050;
-}
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
@@ -28,12 +24,10 @@ body {
 }
 
 .card i {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
-/*table*/
-.table {
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 10px;
-  box-shadow: #666 1px 2px 3px;
+
+.icon-bg {
+  width: 50px;
+  height: 50px;
 }

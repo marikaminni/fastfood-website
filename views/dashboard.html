@@ -18,139 +18,147 @@
     <title>Bros Dashboard</title>
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar">
-        <div class="container-fluid">
-          <div
-            class="dropdown ms-auto align-items-center align-content-center justify-content-end"
-          >
-            <a
-              class="nav-link dropdown-toggle px-2"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <img
-                class="rounded-circle"
-                src="/immagini/admin-image.png"
-                alt="admin-image"
-                width="32"
-              />
-            </a>
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown mt-2"
-              data-popper-placement="bottom-end"
-            >
-              <li>
-                <a class="dropdown-item" href="#" id="logout">
-                  <span>
-                    <i class="bi bi-box-arrow-right"></i>
-                  </span>
-                  Logout</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
     <div class="container-fluid">
       <div class="row">
-        <aside id="sidebar" class="col-md-2">
-          <button
-            class="btn btn-dark d-lg-none"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasResponsive"
-            aria-controls="offcanvasResponsive"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-list"
-              viewBox="0 0 16 16"
+        <div class="col-12">
+          <!--=====================Header=====================-->
+          <header class="header w-100 z-0 position-absolute shadow-sm">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <div
+                  class="dropdown ms-auto align-items-center align-content-center justify-content-end"
+                >
+                  <a
+                    class="nav-link dropdown-toggle px-2"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <img
+                      class="rounded-circle"
+                      src="/immagini/admin-image.png"
+                      alt="admin-image"
+                      width="32"
+                    />
+                  </a>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown mt-2"
+                    data-popper-placement="bottom-end"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="#" id="logout">
+                        <span>
+                          <i class="bi bi-box-arrow-right"></i>
+                        </span>
+                        Logout</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </header>
+        </div>
+        <div class="col-md-2">
+          <!--=====================Sidebar=====================-->
+          <aside id="sidebar" class="position-relative z-1 h-100">
+            <button
+              class="btn btn-transparent d-lg-none z-1 position-absolute m-1"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasResponsive"
+              aria-controls="offcanvasResponsive"
             >
-              <path
-                fill-rule="evenodd"
-                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-              />
-            </svg>
-          </button>
-
-          <div
-            class="offcanvas-lg offcanvas-start h-100 rounded text-bg-dark"
-            tabindex="-1"
-            id="offcanvasResponsive"
-            aria-labelledby="offcanvasDashboardLabel"
-          >
-            <div class="offcanvas-header p-3">
-              <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">
-                Burger Bros
-              </h5>
-              <button
-                type="button"
-                class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas"
-                data-bs-target="#offcanvasResponsive"
-                aria-label="Close"
-              ></button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-list"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+                />
+              </svg>
+            </button>
+            <!--!Rivedere altezza-->
+            <div
+              class="offcanvas-lg offcanvas-start h-100 text-bg-dark"
+              tabindex="-1"
+              id="offcanvasResponsive"
+              aria-labelledby="offcanvasDashboardLabel"
+            >
+              <div class="offcanvas-header p-3">
+                <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">
+                  <img
+                    src="/immagini/burger-icon.png"
+                    alt="burger-icon"
+                    width="32"
+                  />
+                  Burger Bros
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="offcanvas"
+                  data-bs-target="#offcanvasResponsive"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body p-3">
+                <ul class="nav nav-underline flex-column">
+                  <li class="nav-item">
+                    <button
+                      class="nav-link active text-decoration-none text-white-50"
+                      type="button"
+                      id="dashboard"
+                    >
+                      <i class="bi bi-columns-gap"></i>
+                      Dashboard
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button
+                      id="orders"
+                      type="button"
+                      class="nav-link text-decoration-none text-white-50"
+                    >
+                      <i class="bi bi-clipboard-fill"></i> Orders
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button
+                      id="bookings"
+                      type="button"
+                      class="nav-link text-decoration-none text-white-50"
+                    >
+                      <i class="bi bi-book-half"></i>
+                      Bookings
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="offcanvas-body p-3">
-              <ul class="nav nav-underline flex-column">
-                <li class="nav-item">
-                  <button
-                    class="nav-link active text-decoration-none text-white-50"
-                    type="button"
-                    id="dashboard"
-                  >
-                    <i class="bi bi-columns-gap"></i>
-                    Dashboard
-                  </button>
-                </li>
-                <li calss="nav-item">
-                  <button
-                    id="orders"
-                    type="button"
-                    class="nav-link text-decoration-none text-white-50"
-                  >
-                    <i class="bi bi-clipboard-fill"></i> Orders
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button
-                    id="bookings"
-                    type="button"
-                    class="nav-link text-decoration-none text-white-50"
-                  >
-                    <i class="bi bi-book-half"></i>
-                    Bookings
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </aside>
-
-        <div class="col-12 col-md-9 col-lg-10 p-4">
-          <div class="container">
+          </aside>
+        </div>
+        <!--=====================Main Content=====================-->
+        <div class="col-12 col-md-9 col-lg-10 p-4 min-vh-100">
+          <div class="container mt-5">
             <div class="row">
               <div class="col-12">
-                <!--todo: add col-6 before each table-->
                 <div class="container m-2" id="dashboard-title">
                   <h2 class="text-start">
-                    <!--todo: add admin name here-->
-                    Hello, <span style="color: red">Admin</span>
+                    Hello, <span style="color: #dc3545">Admin</span>
                   </h2>
                   <p class="text-start text-muted">Welcome to the Dashboard</p>
                 </div>
                 <!--overview: total bookings, total orders, order pendings, order done-->
                 <div
-                  class="row row-cols-1 row-cols-md-4 g-4"
+                  class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4"
                   id="dashboard-card"
                 >
                   <div class="col">
@@ -159,9 +167,11 @@
                         <div
                           class="col-4 d-flex align-items-center justify-content-center"
                         >
-                          <i
-                            class="bi bi-journal-text bg-danger rounded-circle text-light"
-                          ></i>
+                          <div
+                            class="icon-bg bg-danger rounded-circle d-flex align-items-center justify-content-center"
+                          >
+                            <i class="bi bi-journal-text text-light"></i>
+                          </div>
                         </div>
                         <div class="col-8">
                           <div class="card-body">
@@ -183,9 +193,11 @@
                         <div
                           class="col-4 d-flex align-items-center justify-content-center"
                         >
-                          <i
-                            class="bi bi-cart-plus-fill bg-info rounded text-light"
-                          ></i>
+                          <div
+                            class="icon-bg bg-info rounded-circle d-flex align-items-center justify-content-center"
+                          >
+                            <i class="bi bi-cart-plus-fill text-light"></i>
+                          </div>
                         </div>
                         <div class="col-8">
                           <div class="card-body">
@@ -199,14 +211,16 @@
                     </div>
                   </div>
                   <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 w-100">
                       <div class="row">
                         <div
                           class="col-4 d-flex align-items-center justify-content-center"
                         >
-                          <i
-                            class="bi bi-cart-fill bg-warning rounded fw-1 text-light m-2"
-                          ></i>
+                          <div
+                            class="icon-bg bg-warning rounded-circle d-flex align-items-center justify-content-center"
+                          >
+                            <i class="bi bi-cart-fill text-light"></i>
+                          </div>
                         </div>
                         <div class="col-8">
                           <div class="card-body">
@@ -228,9 +242,11 @@
                         <div
                           class="col-4 d-flex align-items-center justify-content-center"
                         >
-                          <i
-                            class="bi bi-cart-check-fill bg-success rounded fw-1 text-light m-2"
-                          ></i>
+                          <div
+                            class="icon-bg bg-success rounded-circle d-flex align-items-center justify-content-center"
+                          >
+                            <i class="bi bi-cart-check-fill text-light"></i>
+                          </div>
                         </div>
                         <div class="col-8">
                           <div class="card-body">
@@ -249,7 +265,7 @@
                 <div class="table-responsive">
                   <table
                     id="orders-table"
-                    class="table table-sm table-hover caption-top d-none"
+                    class="table table-sm table-hover caption-top rounded-3 overflow-hidden d-none"
                   >
                     <caption>
                       Orders
@@ -274,7 +290,7 @@
                 <div class="table-responsive">
                   <table
                     id="bookings-table"
-                    class="table table-sm table-hover caption-top d-none"
+                    class="table table-sm table-hover caption-top rounded-3 overflow-hidden d-none"
                   >
                     <caption>
                       Bookings

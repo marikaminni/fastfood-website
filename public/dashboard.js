@@ -162,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //Status
             const orderStatus = document.createElement("td");
-            //orderStatus.textContent = order.status;
 
             //add dropdown status
             const dropdown = document.createElement("div");
@@ -194,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
               statusBtn.classList.add("dropdown-item");
               statusBtn.textContent = status;
 
+              //disable current status
               if (status === order.status) {
                 statusBtn.setAttribute("disabled", "true");
               }
@@ -203,6 +203,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 //update status and color
                 dropdownButton.textContent = status;
                 setButtonColor(dropdownButton, status);
+
+                //Update dropdown
+                const menuItems =
+                  dropdownMenu.querySelectorAll(".dropdown-item");
+                {
+                  menuItems.forEach((item) => {
+                    if (item.textContent === status) {
+                      item.setAttribute("disabled", "true");
+                    } else {
+                      item.removeAttribute("disabled");
+                    }
+                  });
+                }
               });
 
               statusItem.appendChild(statusBtn);
