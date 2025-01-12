@@ -242,3 +242,23 @@ async function initMap() {
 }
 
 initMap();
+
+//*Animazioni
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate-visible");
+        // Stop observing the target
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+
+const elements = document.querySelectorAll(
+  ".animate-caption, .animate-product, .animate-from-left, .animate-from-right, .animate-from-bottom, .animate-from-top"
+);
+
+elements.forEach((el) => observer.observe(el));

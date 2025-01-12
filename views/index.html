@@ -39,7 +39,6 @@
     <link rel="icon" type="image/png" href="/immagini/burger-icon.png" />
   </head>
   <body>
-    <!--TODO: aggiungi margine sistemare link al centro anche quando c'è toggle e allineamento del logo con la scritta-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -64,7 +63,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
@@ -76,12 +75,10 @@
               <a class="nav-link" href="#book">Book a table</a>
             </li>
           </ul>
-          <!--! link non funziona-->
           <a
             href="/order"
             class="btn btn-order align-end btn-danger text-white"
             role="button"
-            data-bs-toggle="button"
             >Order online</a
           >
         </div>
@@ -96,7 +93,9 @@
               class="d-block w-100"
               alt="burger"
             />
-            <div class="carousel-caption d-none d-sm-block custom-caption">
+            <div
+              class="carousel-caption d-none d-sm-block custom-caption animate-caption"
+            >
               <h5 class="highlight">Burger Bros</h5>
               <p class="subtitle">Bite into Happiness, <br />Every Time!</p>
             </div>
@@ -107,7 +106,9 @@
               class="d-block w-100"
               alt="sweet crave"
             />
-            <div class="carousel-caption d-none d-sm-block custom-caption2">
+            <div
+              class="carousel-caption d-none d-sm-block custom-caption2 animate-caption"
+            >
               <h5 class="highlight2">The Crave is Back !</h5>
               <p class="subtitle2">
                 Can't resist it? <br />
@@ -121,7 +122,9 @@
               class="d-block w-100"
               alt="spicy burger"
             />
-            <div class="carousel-caption d-none d-sm-block custom-caption3">
+            <div
+              class="carousel-caption d-none d-sm-block custom-caption3 animate-caption"
+            >
               <h5 class="highlight3">Try it out !</h5>
               <p class="subtitle3">
                 Our spicy burger <br />
@@ -153,14 +156,14 @@
     <!--Sezione best products-->
     <section class="best-product layout-padding-bottom">
       <div class="container">
-        <div class="top-product text-center">
+        <div class="top-product text-center animate-from-top">
           <h2>Our Best Products</h2>
           <p>Try our best selling burgers</p>
         </div>
         <!-- Inizio griglia -->
         <div class="row justify-content-center mt-5">
           <div class="col-md-6 col-lg-4 mb-5">
-            <div class="card h-100 text-white bg-dark">
+            <div class="card h-100 text-white bg-dark animate-product">
               <img
                 src="/immagini/texas-burger.png"
                 class="card-img-top"
@@ -172,7 +175,7 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-4 mb-5">
-            <div class="card h-100 text-white bg-dark">
+            <div class="card h-100 text-white bg-dark animate-product">
               <img
                 src="/immagini/bronx-steakhouse.png"
                 class="card-img-top"
@@ -184,7 +187,7 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-4 mb-5">
-            <div class="card h-100 text-white bg-dark">
+            <div class="card h-100 text-white bg-dark animate-product">
               <img
                 src="/immagini/baconking.png"
                 class="card-img-top"
@@ -202,10 +205,10 @@
     <section class="about-section layout-padding-bottom bg-dark">
       <div class="container overflow-hidden">
         <div class="row gy-5 justify-content-around">
-          <div class="about-images p-2 col-md-6">
+          <div class="about-images p-2 col-md-6 animate-from-left">
             <img src="/immagini/about.png" class="img-fluid" alt="about us" />
           </div>
-          <div class="description p-2 col-md-6 text-white">
+          <div class="description p-2 col-md-6 text-white animate-from-right">
             <h2 id="about">Burger Bros</h2>
             <p>
               Where flavor meets fun, and every burger tells a story. We’re not
@@ -230,63 +233,68 @@
     </section>
     <!--Sezione Menu-->
     <section class="menu-section layout-padding-bottom">
+      <div class="menu-title text-center mb-3 animate-from-top">
+        <h2 id="menu">Menu</h2>
+      </div>
       <div
-        class="swiffy-slider slider-item-show3 slider-item-reveal slider-nav-outside slider-nav-caretfill"
+        class="button-container d-flex flex-wrap align-items-center justify-content-center gap-2 mx-auto mb-4 p-2 animate-from-top"
       >
-        <div class="menu-title text-center mb-3">
-          <h2 id="menu">Menu</h2>
-        </div>
-        <div
-          class="button-container d-flex justify-content-center gap-2 mx-auto mb-4 overflow-x-scroll"
+        <button
+          class="category-button h-100 btn btn-outline-danger rounded-pill active"
+          type="button"
+          data-category="Beef"
+          data-bs-toggle="button"
+          aria-pressed="true"
         >
-          <button
-            class="category-button btn btn-outline-danger active"
-            type="button"
-            data-category="Beef"
-            data-bs-toggle="button"
-            aria-pressed="true"
-          >
-            Beef
-          </button>
-          <button
-            class="category-button btn btn-outline-danger"
-            type="button"
-            data-category="Chicken"
-            data-bs-toggle="button"
-          >
-            Chicken
-          </button>
-          <button
-            class="category-button btn btn-outline-danger"
-            type="button"
-            data-category="Beverages"
-            data-bs-toggle="button"
-          >
-            Beverages
-          </button>
-          <button
-            class="category-button btn btn-outline-danger"
-            type="button"
-            data-category="Snack"
-            data-bs-toggle="button"
-          >
-            Snacks
-          </button>
-          <button
-            class="category-button btn btn-outline-danger"
-            type="button"
-            data-category="Desserts"
-            data-bs-toggle="button"
-          >
-            Desserts
-          </button>
+          Beef
+        </button>
+        <button
+          class="category-button h-100 btn btn-outline-danger rounded-pill"
+          type="button"
+          data-category="Chicken"
+          data-bs-toggle="button"
+        >
+          Chicken
+        </button>
+        <button
+          class="category-button h-100 btn btn-outline-danger rounded-pill"
+          type="button"
+          data-category="Beverages"
+          data-bs-toggle="button"
+        >
+          Beverages
+        </button>
+        <button
+          class="category-button h-100 btn btn-outline-danger rounded-pill"
+          type="button"
+          data-category="Snack"
+          data-bs-toggle="button"
+        >
+          Snacks
+        </button>
+        <button
+          class="category-button h-100 btn btn-outline-danger rounded-pill"
+          type="button"
+          data-category="Desserts"
+          data-bs-toggle="button"
+        >
+          Desserts
+        </button>
 
-          <a href="/order" class="btn btn-outline-danger" role="button"
-            >View All</a
-          >
-        </div>
-        <!--todo: sistemare layout-->
-        <div class="slider-container row" id="product-container">
+        <a
+          href="/order"
+          class="h-100 btn btn-outline-danger rounded-pill flex-shrink-0"
+          role="button"
+          >View All</a
+        >
+      </div>
+      <div
+        class="swiffy-slider slider-item-show3 slider-item-show2-sm slider-item-reveal slider-nav-outside slider-nav-caretfill"
+      >
+        <div
+          class="slider-container row animate-from-top"
+          id="product-container"
+        >
           <!--*Prodotti inseriti qui-->
         </div>
         <button type="button" class="slider-nav"></button>
@@ -296,12 +304,12 @@
     <!--Sezione Book table e mappa-->
     <section class="booktable-section layout-padding-bottom">
       <div class="container overflow-hidden">
-        <div class="booktable-title text-start mb-4">
+        <div class="booktable-title text-start mb-4 animate-from-bottom">
           <h2 id="book">Book a Table</h2>
         </div>
         <div class="row gx-5">
           <!--Form-->
-          <div class="col-md-6">
+          <div class="col-md-6 animate-from-bottom">
             <form
               method="post"
               action="/book-table"
@@ -336,7 +344,6 @@
                 <label for="datetime-local" class="form-label"
                   >Date and Time</label
                 >
-                <!--TODO: manage time limit-->
                 <input
                   type="datetime-local"
                   class="form-control"
@@ -402,7 +409,7 @@
             </div>
           </div>
           <!--Mappa-->
-          <div class="col-md-6 mt-lg-4">
+          <div class="col-md-6 mt-lg-4 animate-from-bottom">
             <div id="map"></div>
           </div>
         </div>
