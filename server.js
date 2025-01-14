@@ -34,10 +34,6 @@ app.get("/dashboard", (req, res) => {
   res.render("dashboard.html");
 });
 
-/*app.get("/404", (req, res) => {
-  res.render("404.html");
-});*/
-
 //send order
 app.post("/order", (req, res) => {
   console.log("Order data received:", req.body);

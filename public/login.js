@@ -21,7 +21,6 @@ signupNav.addEventListener("click", () => {
   signinForm.classList.add("d-none");
 });
 
-//!Signin input remain "valid" after invalid credentials
 (() => {
   "use strict";
 
