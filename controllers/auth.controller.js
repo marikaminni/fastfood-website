@@ -3,6 +3,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const signUp = async (req, res) => {
+  // #swagger.tags = ["Auth"]
+  // #swagger.summary = "User registration"
+  // #swagger.description = "Register a new user"
   try {
     const { name, password } = req.body;
     const userExist = await db.User.findOne({
@@ -24,6 +27,9 @@ const signUp = async (req, res) => {
 };
 
 const signIn = async (req, res) => {
+  // #swagger.tags = ["Auth"]
+  // #swagger.summary = "User login"
+  // #swagger.description = "Login user and generate JWT token"
   try {
     const { name, password } = req.body;
     console.log(name, password);
@@ -79,6 +85,9 @@ const signIn = async (req, res) => {
 
 //verify refresh token and generate new access token
 const refreshToken = (req, res) => {
+  // #swagger.tags = ["Auth"]
+  // #swagger.summary = "Refresh access token"
+  // #swagger.description = "Generate new access token using refresh token"
   const cookie = req.cookies.refreshToken;
 
   if (cookie) {
@@ -111,6 +120,9 @@ const refreshToken = (req, res) => {
 };
 
 const logout = async (req, res) => {
+  // #swagger.tags = ["Auth"]
+  // #swagger.summary = "User logout"
+  // #swagger.description = "Logout user and clear refresh token cookie"
   try {
     res.clearCookie("refreshToken", {
       secure: true,
